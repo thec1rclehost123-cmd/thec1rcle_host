@@ -41,6 +41,7 @@ const createInitialFormState = () => ({
 export default function CreateEventForm() {
   const [form, setForm] = useState(createInitialFormState);
   const [showExplore, setShowExplore] = useState(true);
+  const [showGuestlist, setShowGuestlist] = useState(false);
   const [password, setPassword] = useState(false);
   const [activity, setActivity] = useState(true);
   const [youtubeEnabled, setYoutubeEnabled] = useState(false);
@@ -201,7 +202,8 @@ export default function CreateEventForm() {
             showExplore,
             password: password ? form.eventPassword : "",
             activity,
-            recurring: form.recurring
+            recurring: form.recurring,
+            showGuestlist
           }
         })
       });
@@ -221,6 +223,7 @@ export default function CreateEventForm() {
       setPassword(false);
       setShowExplore(true);
       setActivity(true);
+      setShowGuestlist(false);
     } catch (error) {
       setStatus({ type: "error", message: error.message || "Unable to create event" });
     } finally {
@@ -573,6 +576,7 @@ export default function CreateEventForm() {
           <GlassSection icon={<IconSettings />} title="Page Settings">
             <div className="space-y-4">
               <Toggle label="Show on Explore Page" value={showExplore} onChange={setShowExplore} />
+              <Toggle label="Show guestlist on event page" value={showGuestlist} onChange={setShowGuestlist} />
 
               <Toggle label="Password Protected" value={password} onChange={setPassword} />
               {password && (

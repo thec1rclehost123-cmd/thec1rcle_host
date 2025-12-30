@@ -121,14 +121,14 @@ export default function HostLayout({ children }) {
                                 className="flex items-center gap-4 pl-2 pr-1 py-1 rounded-full hover:bg-white/[0.05] transition-all border border-transparent hover:border-white/[0.05]"
                             >
                                 <div className="text-right hidden md:block">
-                                    <p className="text-base font-bold text-white leading-none mb-1.5">{profile.displayName}</p>
+                                    <p className="text-base font-bold text-white leading-none mb-1.5">{profile?.displayName || user?.displayName || "Host"}</p>
                                     <p className="text-xs font-bold text-[#666] uppercase tracking-wider">Admin</p>
                                 </div>
                                 <div className="w-12 h-12 rounded-full bg-[#1A1A1A] border border-white/[0.1] flex items-center justify-center overflow-hidden">
-                                    {profile.photoURL ? (
-                                        <img src={profile.photoURL} alt={profile.displayName} className="w-full h-full object-cover" />
+                                    {profile?.photoURL || user?.photoURL ? (
+                                        <img src={profile?.photoURL || user?.photoURL} alt={profile?.displayName || user?.displayName} className="w-full h-full object-cover" />
                                     ) : (
-                                        <span className="text-base font-bold text-white">{profile.displayName?.[0]}</span>
+                                        <span className="text-base font-bold text-white">{(profile?.displayName || user?.displayName || "H")[0]}</span>
                                     )}
                                 </div>
                             </button>
@@ -143,7 +143,7 @@ export default function HostLayout({ children }) {
                                     >
                                         <div className="p-6 border-b border-white/[0.05]">
                                             <p className="text-base font-bold text-white">Signed in as</p>
-                                            <p className="text-sm text-[#888] truncate mt-1">{profile.email}</p>
+                                            <p className="text-sm text-[#888] truncate mt-1">{profile?.email || user?.email}</p>
                                         </div>
                                         <div className="p-3 space-y-1">
                                             <Link href="/host/settings" className="flex items-center gap-4 px-4 py-3 rounded-2xl text-sm font-bold text-[#ccc] hover:text-white hover:bg-white/[0.05] transition-colors">

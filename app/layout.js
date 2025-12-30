@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import MobileBottomNav from "../components/MobileBottomNav";
 import PageWrapper from "../components/PageWrapper";
 import AppProviders from "../components/providers/AppProviders";
@@ -73,6 +74,7 @@ export default function RootLayout({ children }) {
             </div>
             <Navbar />
             <PageWrapper>{children}</PageWrapper>
+            <Footer />
             <MobileBottomNav />
             <SmoothScroll />
           </div>
